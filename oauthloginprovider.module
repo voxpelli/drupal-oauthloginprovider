@@ -2,6 +2,11 @@
 // $Id$
 
 /**
+ * @file
+ * Main module for OAuth login provider
+ */
+
+/**
  * Implementation of hook_autoload_info().
  */
 function oauthloginprovider_autoload_info() {
@@ -10,6 +15,15 @@ function oauthloginprovider_autoload_info() {
       'file' => 'OAuthLoginResource.php',
     ),
   );
+}
+
+/**
+ * Implementation of hook_ctools_plugin_api().
+ */
+function oauthloginprovider_ctools_plugin_api($module, $api) {
+  if ($module == 'services' && $api == 'services') {
+    return array('version' => 3);
+  }
 }
 
 /**
@@ -53,40 +67,4 @@ function oauthloginprovider_default_oauth_common_context() {
   $contexts[$context->name] = $context;
 
   return $contexts;
-}
-
-/**
- * Implementation of hook_default_services_endpoint().
- */
-function oauthloginprovider_default_services_endpoint() {
-  $endpoints = array();
-
-  $endpoint = new stdClass;
-  $endpoint->disabled = FALSE; /* Edit this to true to make a default endpoint disabled initially */
-  $endpoint->name = 'oauthlogin';
-  $endpoint->title = 'OAuth login API';
-  $endpoint->server = 'rest_server';
-  $endpoint->path = 'oauthlogin/api';
-  $endpoint->authentication = array(
-    'services_oauth' => array(
-      'oauth_context' => 'oauthlogin',
-    ),
-  );
-  $endpoint->resources = array(
-    'oauthlogin' => array(
-      'alias' => 'user',
-      'actions' => array(
-        'info' => array(
-          'enabled' => 1,
-          'services_oauth' => array(
-            'credentials' => 'token',
-            'authorization' => 'user_info',
-          ),
-        ),
-      ),
-    ),
-  );
-  $endpoints[$endpoint->name] = $endpoint;
-
-  return $endpoints;
 }
