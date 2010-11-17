@@ -1,4 +1,4 @@
-; $Id$
+; $Id: oauthloginprovider.info,v 1.1 2010/11/17 08:29:01 voxpelli Exp $
 name = OAuth Login Provider
 description = Allows users to log in to other sites through your site using OAuth
 core = 6.x

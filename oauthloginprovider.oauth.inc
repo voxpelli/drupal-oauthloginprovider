@@ -1,5 +1,5 @@
 <?php
-// $Id$
+// $Id: oauthloginprovider.oauth.inc,v 1.1 2010/11/17 08:29:01 voxpelli Exp $
 
 /**
  * @file
