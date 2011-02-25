@@ -1,4 +1,3 @@
-; $Id$
 name = OAuth Login Provider
 description = Allows users to log in to other sites through your site using OAuth
 core = 6.x
