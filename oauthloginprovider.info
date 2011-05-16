@@ -1,6 +1,6 @@
 name = OAuth Login Provider
 description = Allows users to log in to other sites through your site using OAuth
-core = 6.x
+core = 7.x
 package = "OAuth"
 
 dependencies[] = services
